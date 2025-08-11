@@ -10,6 +10,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 
+
+app.get("/",(req,res)=>{
+    res.send(`<center><h2>Server Started :) on ${process.env.port} port🔥!!!</h2></center>`);
+});
+
 app.use("/product",prodRoute);
 
 
