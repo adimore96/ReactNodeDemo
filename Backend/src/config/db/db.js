@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
 const host = process.env.host;
 const user = process.env.user;
@@ -14,12 +14,12 @@ const conn = mysql.createConnection({
     database:dbname
 });
 
-conn.connect((err)=>{
-    if(err){
-        console.log(`DB not Connected`);
-    }else{
-        console.log(`DB Connected :)`);
-    }
-});
+conn.then((result)=>{
+    console.log("DB Connected: ");
+    
+})
+.catch((err)=>{
+    console.log(`DB not Connected: `);
+})
 
 module.exports = conn;
